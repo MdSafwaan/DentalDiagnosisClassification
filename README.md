@@ -63,7 +63,7 @@ There is a critical need for an:
 | "My gums are bleeding and swollen, especially when I brush my teeth."      | Gingivitis  |
 | "I want to whiten my teeth for cosmetic reasons."                          | Cosmetic    |
 
-## Technical Stack ):
+## Technical Stack 
 
 - Programming Language: Python 
 - Libraries: PyTorch 
