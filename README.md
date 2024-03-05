@@ -40,9 +40,7 @@ There is a critical need for an:
 - Accurate diagnosis predictions based on patient-provided text descriptions.
 - Detailed explanations for each diagnosis, enhancing user comprehension.
 
-## System Architecture:
 
-The system follows a client-server architecture:
 
 ### Client-side interface:
 - User-friendly interface for patients to input their dental symptoms or concerns.
