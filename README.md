@@ -66,8 +66,8 @@ insert image
 
 ## Technical Stack (Optional):
 
-- Programming Language: Python (or specify your chosen language)
-- Libraries: TensorFlow, PyTorch (or specify your chosen libraries)
+- Programming Language: Python 
+- Libraries: PyTorch 
 
 ## Challenges:
 
