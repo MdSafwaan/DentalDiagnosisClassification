@@ -40,7 +40,7 @@ There is a critical need for an:
 - Accurate diagnosis predictions based on patient-provided text descriptions.
 - Detailed explanations for each diagnosis, enhancing user comprehension.
 
-##Architecture :
+## Architecture :
 
 ### Client-side interface:
 - User-friendly interface for patients to input their dental symptoms or concerns.
@@ -52,9 +52,8 @@ There is a critical need for an:
 - Provides detailed explanations for each diagnosis.
 - Returns the diagnosis prediction and explanation to the client for display.
 
-### worklfow digaram
-
-insert image
+### Workflow Diagram
+![Workflow Diagram](workflow_diagram.png)
 
 ## Sample Data Example:
 
@@ -64,7 +63,7 @@ insert image
 | "My gums are bleeding and swollen, especially when I brush my teeth."      | Gingivitis  |
 | "I want to whiten my teeth for cosmetic reasons."                          | Cosmetic    |
 
-## Technical Stack (Optional):
+## Technical Stack ):
 
 - Programming Language: Python 
 - Libraries: PyTorch 
@@ -87,69 +86,3 @@ This project focuses on developing a robust system for dental diagnosis classifi
 
 This project has the potential to significantly improve the dental diagnosis process, offering a more accessible and accurate solution for patients and healthcare providers. By addressing the identified challenges and leveraging the proposed technical approach, we aim to contribute to advancements in telemedicine and oral healthcare.
 
-## Sample Code Example:
-
-```python
-import pandas as pd
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch
-
-# Sample dental diagnosis data 
-
-data = pd.DataFrame({
-    "text": [
-        "The patient has visible carious lesions on the upper left central incisor.",
-        "The dentist recommended a filling for the decayed tooth due to caries progression.",
-        "The patient is concerned about gum bleeding and redness.",  
-        "The wisdom teeth are causing discomfort and might require extraction.", 
-        "The patient wants to whiten their teeth for cosmetic reasons.",  
-    ],
-    "label": [
-        "caries",
-        "healthy",
-        "gingivitis",  
-        "wisdom teeth",  
-        "cosmetic", 
-    ]  
-})
-
-# Preprocess text data (as before)
-data["text"] = data["text"].str.lower()
-data["text"] = data["text"].str.replace("[^a-zA-Z0-9\s]", "", regex=True)  # Remove punctuation
-
-# Pre-trained LLM 
-
-model_name = "bert-base-uncased"  
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=len(set(data["label"])))
-
-# Function to diagnose using the LLM
-def diagnose(text):
-    encoded_text = tokenizer(text, return_tensors="pt")
-    with torch.no_grad():
-        outputs = model(**encoded_text)
-        predictions = torch.argmax(outputs.logits, dim=-1)
-    return data["label"].iloc[predictions.item()]
-
-# Improved explanations with additional information and avoiding medical jargon (replace with factual sources)
-
-explanations = {
-    "caries": "Cavities, also known as tooth decay, occur when plaque buildup weakens tooth enamel. It can cause pain, sensitivity, and tooth loss. Early detection and treatment are crucial.",
-    "healthy": "The provided text suggests good oral health. Regular check-ups are still recommended for preventative care.",
-    "gingivitis": "This indicates early-stage gum inflammation (gingivitis) characterized by bleeding and redness. Early treatment with improved oral hygiene and professional cleaning can prevent progression to periodontitis.",
-    "wisdom teeth": "Wisdom teeth are the third molars that may erupt partially or fully, causing discomfort or impaction. Consult your dentist for evaluation and potential extraction.",
-    "cosmetic": "This text doesn't suggest dental issues, but expresses interest in cosmetic procedures like teeth whitening. Consult a dentist for safe and appropriate options."
-}
-
-# User interaction 
-
-while True:
-    user_input = input("Enter patient text (or 'quit' to exit): ")
-    if user_input.lower() == "quit":
-        break
-
-    diagnosis = diagnose(user_input)
-    explanation = explanations.get(diagnosis, "Diagnosis explanation unavailable.")
-
-    print(f"Diagnosis: {diagnosis}")
-    print(f"Explanation: {explanation}")
