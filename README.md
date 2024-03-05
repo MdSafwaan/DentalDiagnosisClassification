@@ -87,6 +87,8 @@ This project focuses on developing a robust system for dental diagnosis classifi
 
 This project has the potential to significantly improve the dental diagnosis process, offering a more accessible and accurate solution for patients and healthcare providers. By addressing the identified challenges and leveraging the proposed technical approach, we aim to contribute to advancements in telemedicine and oral healthcare.
 
+## Sample Code Example:
+
 ```python
 import pandas as pd
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
