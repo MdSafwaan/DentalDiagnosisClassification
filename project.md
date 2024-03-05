@@ -53,7 +53,8 @@ There is a critical need for an:
 - Returns the diagnosis prediction and explanation to the client for display.
 
 ### Workflow Diagram
-![Workflow Diagram](workflow_diagram.png)
+![Flow chart](https://github.com/MdSafwaan/DentalDiagnosisClassification/assets/96886061/963facc6-4d1a-4b87-9f84-4686627bb92b)
+
 
 ## Sample Data Example:
 
