@@ -52,9 +52,9 @@ There is a critical need for an:
 - Provides detailed explanations for each diagnosis.
 - Returns the diagnosis prediction and explanation to the client for display.
 
-### Sample System Architecture Diagram:
+### worklfow digaram
 
-[Insert a diagram here depicting the client-side interface, server-side backend, and their interaction flow.]
+insert image
 
 ## Sample Data Example:
 
